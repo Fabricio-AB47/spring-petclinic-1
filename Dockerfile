@@ -10,3 +10,8 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/app/app.jar"]
+
+FROM chrismerchan/alpine-java
+LABEL maintainer="fabricio.a.borja.h@gmail.com"
+COPY /target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar /home/springpetclinic-2.3.0.jar
+CMD ["java","-jar","/home/spring-petclinic-2.3.0.jar"]
